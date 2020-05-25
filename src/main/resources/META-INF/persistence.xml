@@ -3,11 +3,6 @@
   <persistence-unit name="com.mycompany_super2_war_1.0-SNAPSHOTPU" transaction-type="JTA">
     <jta-data-source>java:app/jdbc/super</jta-data-source>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
-    <properties/>
-  </persistence-unit>
-  <persistence-unit name="com.mycompany_super2_war_1.0-SNAPSHOTPU1" transaction-type="JTA">
-    <jta-data-source>java:app/jdbc/super</jta-data-source>
-    <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
     </properties>
