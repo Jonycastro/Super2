@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p = "http://primefaces.org/ui" >
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Login Usuario</title>
+        <title>Admin Login</title>
         <h:outputStylesheet name="css/jsfcrud.css"/>
     </h:head>
     <h:body>
@@ -14,21 +14,15 @@
             </p:messages>
             <h:panelGrid columns="2">
                 <p:outputLabel for="txtNombre" value="Nombre" />
-                <p:inputText id="txtNombre" value="#{loginController.user.nombre}" required ="true"/>
+                <p:inputText id="txtNombre" value="#{adminController.admin.nombre}" required ="true"/>
                 
                 <p:outputLabel for="txtPassword" value="Contraseña" />
-                <p:password id="txtPassword" value="#{loginController.user.contraseña}" required ="true"/>
+                <p:password id="txtPassword" value="#{adminController.admin.contraseña}" required ="true"/>
                 
                 <h:column />
-                <p:commandButton value="Iniciar Sesion" action="#{loginController.verificarUsuario()}"/>
+                <p:commandButton value="Iniciar Sesion" action="#{adminController.verificarAdmin()}"/>
             </h:panelGrid>
-            <p:link value="Crear cuenta" outcome="/Formulario"/>
-            <br>
-                
-            </br>
-            <p:link value="Admin zone" outcome="/admin"/>
         </h:form>
-        
     </h:body>
 </html>
 
