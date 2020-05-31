@@ -6,10 +6,13 @@ import jsf.util.PaginationHelper;
 import jpa.session.ProductosFacade;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.ResourceBundle;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -17,21 +20,27 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import org.primefaces.event.SelectEvent;
+import org.primefaces.event.UnselectEvent;
 
 @Named("productosController")
 @SessionScoped
 public class ProductosController implements Serializable {
 
     private Productos current;
-    private DataModel items = null;
+    private DataModel items;
     @EJB
     private jpa.session.ProductosFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    
+    
 
     public ProductosController() {
+        
     }
-
+    
+  
     public Productos getSelected() {
         if (current == null) {
             current = new Productos();
@@ -231,5 +240,6 @@ public class ProductosController implements Serializable {
         }
 
     }
+    
 
 }
