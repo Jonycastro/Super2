@@ -1,11 +1,13 @@
 package jsf;
 
 import com.mycompany.super2.modelo.Productos;
+import java.awt.event.ActionEvent;
 import jsf.util.JsfUtil;
 import jsf.util.PaginationHelper;
 import jpa.session.ProductosFacade;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javax.annotation.PostConstruct;
@@ -33,11 +35,11 @@ public class ProductosController implements Serializable {
     private jpa.session.ProductosFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    private ArrayList<Productos> lista;
+    private float suma;
     
-    
-
     public ProductosController() {
-        
+        lista=new ArrayList<Productos>();
     }
     
   
@@ -240,6 +242,38 @@ public class ProductosController implements Serializable {
         }
 
     }
+    public String añadirProducto() {
+        
+        current = (Productos) getItems().getRowData();
+        
+        lista.add(current);
+        return "principal"; 
+    }
+    public String eliminarProducto(){
+        current = (Productos) getItems().getRowData();
+        
+        for(int i=0;i<lista.size();i++){
+            if(current.equals(lista.get(i))) {
+                lista.remove(i);
+                break;
+            }
+        }
+        return "principal";
+        
+    }
+    public ArrayList<Productos> getLista(){
+        return lista;
+    }
+    public float precioPedido(){
+        suma=0;
+        for(int i=0; i<lista.size();i++){
+            suma=suma+lista.get(i).getPrecio();
+        }
+        return suma;
+    }
+    
+    
+    
     
 
 }

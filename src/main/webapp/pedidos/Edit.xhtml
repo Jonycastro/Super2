@@ -17,12 +17,12 @@
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.EditPedidosLabel_idPedido}" for="idPedido" />
                     <h:inputText id="idPedido" value="#{pedidosController.selected.idPedido}" title="#{bundle.EditPedidosTitle_idPedido}" required="true" requiredMessage="#{bundle.EditPedidosRequiredMessage_idPedido}"/>
-                    <h:outputLabel value="#{bundle.EditPedidosLabel_fecha}" for="fecha" />
-                    <h:inputText id="fecha" value="#{pedidosController.selected.fecha}" title="#{bundle.EditPedidosTitle_fecha}" >
-                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditPedidosLabel_direccion}" for="direccion" />
+                    <h:inputText id="direccion" value="#{pedidosController.selected.direccion}" title="#{bundle.EditPedidosTitle_direccion}" required="true" requiredMessage="#{bundle.EditPedidosRequiredMessage_direccion}"/>
+                    <h:outputLabel value="#{bundle.EditPedidosLabel_telefono}" for="telefono" />
+                    <h:inputText id="telefono" value="#{pedidosController.selected.telefono}" title="#{bundle.EditPedidosTitle_telefono}" />
                     <h:outputLabel value="#{bundle.EditPedidosLabel_usuario}" for="usuario" />
-                    <h:selectOneMenu id="usuario" value="#{pedidosController.selected.usuario}" title="#{bundle.EditPedidosTitle_usuario}" required="true" requiredMessage="#{bundle.EditPedidosRequiredMessage_usuario}">
+                    <h:selectOneMenu id="usuario" value="#{pedidosController.selected.usuario}" title="#{bundle.EditPedidosTitle_usuario}" >
                         <f:selectItems value="#{usuariosController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>

@@ -10,28 +10,26 @@
         </ui:define>
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
-                <p:messages id="messagesPanel" showDetail="true" closable="true">
-                    <p:autoUpdate />
-                </p:messages> 
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <h:form>
-              
+  
                 <h:panelGrid columns="2">      
-                    <p:outputLabel value="#{bundle.CreateUsuariosLabel_idUsuarios}" for="idUsuarios" />
-                    <p:inputText id="idUsuarios" value="#{usuariosController.selected.idUsuarios}" title="#{bundle.CreateUsuariosTitle_idUsuarios}" required="true" requiredMessage="#{bundle.CreateUsuariosRequiredMessage_idUsuarios}"/>
-                    <p:outputLabel value="#{bundle.CreateUsuariosLabel_nombre}" for="nombre" />
-                    <p:inputText id="nombre" value="#{usuariosController.selected.nombre}" title="#{bundle.CreateUsuariosTitle_nombre}" required="true" requiredMessage="#{bundle.CreateUsuariosRequiredMessage_nombre}"/>
-                    <p:outputLabel value="#{bundle.CreateUsuariosLabel_apellido}" for="apellido" />
-                    <p:inputText id="apellido" value="#{usuariosController.selected.apellido}" title="#{bundle.CreateUsuariosTitle_apellido}" required="true" requiredMessage="#{bundle.CreateUsuariosRequiredMessage_apellido}"/>
-                    <p:outputLabel value="#{bundle.CreateUsuariosLabel_contraseña}" for="contraseña" />
-                    <p:inputText id="contraseña" value="#{usuariosController.selected.contraseña}" title="#{bundle.CreateUsuariosTitle_contraseña}" required="true" requiredMessage="#{bundle.CreateUsuariosRequiredMessage_contraseña}"/>
+                    <h:outputLabel value="#{bundle.CreateUsuariosLabel_idUsuarios}" for="idUsuarios" />
+                    <h:inputText id="idUsuarios" value="#{usuariosController.selected.idUsuarios}" title="#{bundle.CreateUsuariosTitle_idUsuarios}" required="true" requiredMessage="#{bundle.CreateUsuariosRequiredMessage_idUsuarios}"/>
+                    <h:outputLabel value="#{bundle.CreateUsuariosLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{usuariosController.selected.nombre}" title="#{bundle.CreateUsuariosTitle_nombre}" required="true" requiredMessage="#{bundle.CreateUsuariosRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.CreateUsuariosLabel_apellido}" for="apellido" />
+                    <h:inputText id="apellido" value="#{usuariosController.selected.apellido}" title="#{bundle.CreateUsuariosTitle_apellido}" required="true" requiredMessage="#{bundle.CreateUsuariosRequiredMessage_apellido}"/>
+                    <h:outputLabel value="#{bundle.CreateUsuariosLabel_contraseña}" for="contraseña" />
+                    <h:inputText id="contraseña" value="#{usuariosController.selected.contraseña}" title="#{bundle.CreateUsuariosTitle_contraseña}" required="true" requiredMessage="#{bundle.CreateUsuariosRequiredMessage_contraseña}"/>
                 </h:panelGrid>
                 <br />
-                <p:commandLink action="#{usuariosController.create}" value="#{bundle.CreateUsuariosSaveLink}" />
+                <h:commandLink action="#{usuariosController.create2}" value="#{bundle.CreateUsuariosSaveLink}" />
                 <br />
                 <br />
            
-                <p:link outcome="/index" value="Volver"/>
+                <h:link outcome="/index" value="Volver"/>
             </h:form>
         </ui:define>
     </ui:composition>
