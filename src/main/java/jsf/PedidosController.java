@@ -78,6 +78,21 @@ public class PedidosController implements Serializable {
         selectedItemIndex = -1;
         return "Create";
     }
+    public String prepareCreate2() {
+        current = new Pedidos();
+        selectedItemIndex = -1;
+        return "newjsf";
+    }
+    public String create2() {
+        try {
+            getFacade().create(current);
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/resources/Bundle").getString("PedidosCreated"));
+            return prepareCreate2();
+        } catch (Exception e) {
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/resources/Bundle").getString("PersistenceErrorOccured"));
+            return null;
+        }
+    }
 
     public String create() {
         try {
@@ -89,6 +104,7 @@ public class PedidosController implements Serializable {
             return null;
         }
     }
+    
 
     public String prepareEdit() {
         current = (Pedidos) getItems().getRowData();

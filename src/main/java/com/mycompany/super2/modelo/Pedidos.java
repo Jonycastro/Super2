@@ -6,7 +6,6 @@
 package com.mycompany.super2.modelo;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,8 +17,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -32,7 +31,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Pedidos.findAll", query = "SELECT p FROM Pedidos p")
     , @NamedQuery(name = "Pedidos.findByIdPedido", query = "SELECT p FROM Pedidos p WHERE p.idPedido = :idPedido")
-    , @NamedQuery(name = "Pedidos.findByFecha", query = "SELECT p FROM Pedidos p WHERE p.fecha = :fecha")})
+    , @NamedQuery(name = "Pedidos.findByDireccion", query = "SELECT p FROM Pedidos p WHERE p.direccion = :direccion")
+    , @NamedQuery(name = "Pedidos.findByTelefono", query = "SELECT p FROM Pedidos p WHERE p.telefono = :telefono")})
 public class Pedidos implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -41,11 +41,16 @@ public class Pedidos implements Serializable {
     @Basic(optional = false)
     @Column(name = "idPedido")
     private Integer idPedido;
-    @Column(name = "Fecha")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fecha;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "Direccion")
+    private String direccion;
+    @Size(max = 45)
+    @Column(name = "Telefono")
+    private String telefono;
     @JoinColumn(name = "Usuario", referencedColumnName = "idUsuarios")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Usuarios usuario;
 
     public Pedidos() {
@@ -53,6 +58,11 @@ public class Pedidos implements Serializable {
 
     public Pedidos(Integer idPedido) {
         this.idPedido = idPedido;
+    }
+
+    public Pedidos(Integer idPedido, String direccion) {
+        this.idPedido = idPedido;
+        this.direccion = direccion;
     }
 
     public Integer getIdPedido() {
@@ -63,12 +73,20 @@ public class Pedidos implements Serializable {
         this.idPedido = idPedido;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     public Usuarios getUsuario() {
@@ -101,7 +119,7 @@ public class Pedidos implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.super2.modelo.Pedidos[ idPedido=" + idPedido + " ]";
+        return "com.mycompany.pruebas.Pedidos[ idPedido=" + idPedido + " ]";
     }
     
 }
